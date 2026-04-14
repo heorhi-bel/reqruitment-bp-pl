@@ -9,7 +9,7 @@ export interface Message {
 
 export const messagesApi = createApi({
   reducerPath: "messagesApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080" }),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"}),
   tagTypes: ["Messages"],
   endpoints: (builder) => ({
     getMessages: builder.query<Message[], void>({
