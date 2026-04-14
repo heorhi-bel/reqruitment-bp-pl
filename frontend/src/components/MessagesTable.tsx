@@ -6,7 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { EditMessageDialog } from "./EditMessageDialog";
 import { DeleteConfirmDialog } from "./DeleteConfirmDialog";
-import { Pencil, Trash2 } from "lucide-react";
+import { Ellipsis, Pencil, Trash2 } from "lucide-react";
 import type { Message } from "@/store/api";
 
 export function MessagesTable() {
@@ -23,9 +23,9 @@ export function MessagesTable() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-16">ID</TableHead>
+              <TableHead className="w-16">#</TableHead>
               <TableHead>Wiadomość</TableHead>
-              <TableHead className="w-32 text-right">Akcje</TableHead>
+              <TableHead className="w-1 text-right"><Ellipsis className="ml-8 h-4 w-4"/></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -36,9 +36,9 @@ export function MessagesTable() {
                 </TableCell>
               </TableRow>
             )}
-            {messages?.map((msg) => (
+            {messages?.map((msg, index) => (
               <TableRow key={msg.id}>
-                <TableCell className="font-mono text-muted-foreground">{msg.id}</TableCell>
+                <TableCell className="font-mono text-muted-foreground">{++index}</TableCell>
                 <TableCell>{msg.message}</TableCell>
                 <TableCell className="text-right">
                   <div className="flex justify-end gap-2">
